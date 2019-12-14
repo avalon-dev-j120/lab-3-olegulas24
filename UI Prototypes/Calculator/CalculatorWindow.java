@@ -1,4 +1,3 @@
-
 package Calculator;
 
 import java.awt.BorderLayout;
@@ -51,16 +50,12 @@ public class CalculatorWindow extends JFrame {
         this.setMaximumSize(new Dimension(400, 500));
         this.setMinimumSize(new Dimension(300, 400));
         setResizable(false);
-        
-        
         LayoutManager layout = new BorderLayout(10, 10);
         setLayout(layout);
-        
         JPanel panel1 = new JPanel();
         panel1.setPreferredSize(new Dimension(WIDTH, 70));
         panel1.setVisible(true);
-        panel1.setBackground(Color.lightGray);
-                
+        panel1.setBackground(Color.lightGray);         
         add(panel1, NORTH);
         JPanel panel2 = new JPanel();
         panel2.setSize(100, 100);
@@ -69,11 +64,8 @@ public class CalculatorWindow extends JFrame {
         JPanel panel3 = new JPanel();
         panel3.setVisible(true);
         add(panel3, SOUTH);
-        
-        
         panel2.setLayout(new GridLayout(4,4,10,10));
-        panel3.setLayout(new GridLayout(1,1,10,10));
-//      
+        panel3.setLayout(new GridLayout(1,1,10,10));  
         button1 = new JButton("1");
         button2 = new JButton("2");
         button3 = new JButton("3");
@@ -91,15 +83,13 @@ public class CalculatorWindow extends JFrame {
         buttonMinus = new JButton("-");
         buttonMult = new JButton("*");
         buttonDev = new JButton("/");
-        buttonEq.setPreferredSize(new Dimension(WIDTH, 50));
-        
+        buttonEq.setPreferredSize(new Dimension(WIDTH, 50));  
         label = new JLabel("");
         label.setFont(new Font ("TimesRoman", Font.BOLD, 30));
-        //label.setBackground(Color.yellow);
+        label.setBackground(Color.yellow);
         label.setPreferredSize(new Dimension(width-70, 50));
         label.setHorizontalAlignment(JLabel.RIGHT);
-        panel1.add(label);
-        
+        panel1.add(label);    
         panel2.add(button7);
         panel2.add(button8);
         panel2.add(button9);
@@ -115,10 +105,8 @@ public class CalculatorWindow extends JFrame {
         panel2.add(buttonCE);
         panel2.add(button0);
         panel2.add(buttonPoint);
-        panel2.add(buttonDev);
-        
-        panel3.add(buttonEq);
-        
+        panel2.add(buttonDev);      
+        panel3.add(buttonEq);     
         double[] buffer = new double[3];
         buffer[2] = 0;
         String[] sign = new String[1];
@@ -140,10 +128,8 @@ public class CalculatorWindow extends JFrame {
                 }
                 JButton button = (JButton) me.getComponent();
                 label.setText(label.getText() + button.getText());
-                buffer[1] = Double.parseDouble(label.getText());
-                
-            }
-           
+                buffer[1] = Double.parseDouble(label.getText());          
+            }      
         };
          MouseListener buttonCEMouseListener = new MouseAdapter() {
             @Override
@@ -152,10 +138,8 @@ public class CalculatorWindow extends JFrame {
                 buffer[0] = 0;
                 buffer[1] = 0;
                 sign[0] = "+";
-            }
-           
-        };
-        
+            }     
+        };    
         MouseListener buttonSignMouseListener = new MouseAdapter() {
             @Override
             
@@ -173,8 +157,7 @@ public class CalculatorWindow extends JFrame {
                         break;
                     case ("/"):
                         buffer[0] = buffer[0]/buffer [1];
-                        break;
-                    
+                        break;               
                 } 
                 
                 buffer[2] = 0;
@@ -184,11 +167,9 @@ public class CalculatorWindow extends JFrame {
                 if (sign[0] == "=") {
                     buffer[2] = 2;
                 }
-                label.setText(Double.toString(buffer[0]));
-                
+                label.setText(Double.toString(buffer[0]));          
             }
-        };
-        
+        };    
         button1.addMouseListener(buttonMouseListener);
         button2.addMouseListener(buttonMouseListener);
         button3.addMouseListener(buttonMouseListener);
@@ -205,8 +186,6 @@ public class CalculatorWindow extends JFrame {
         buttonMinus.addMouseListener(buttonSignMouseListener);
         buttonMult.addMouseListener(buttonSignMouseListener);
         buttonDev.addMouseListener(buttonSignMouseListener);
-        buttonEq.addMouseListener(buttonSignMouseListener);
-        
-    }
-     
+        buttonEq.addMouseListener(buttonSignMouseListener);    
+    } 
 }
